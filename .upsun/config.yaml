@@ -16,6 +16,16 @@ applications:
 
     hooks:
       build: |
+        # Fetch source from upstream cloudflare/vinext hackernews example
+        git clone --depth 1 --filter=blob:none --sparse https://github.com/cloudflare/vinext.git /tmp/vinext-src
+        cd /tmp/vinext-src && git sparse-checkout set examples/hackernews
+        cp -r /tmp/vinext-src/examples/hackernews/. $PLATFORM_APP_DIR/
+        cd $PLATFORM_APP_DIR
+
+        # Apply Upsun branding
+        sed -i 's/Cloudflare Workers/Upsun/g' components/server-info.jsx
+
+        # Install and build
         npm i -g pnpm@10 && pnpm i --no-frozen-lockfile && pnpm run build
 
     web:
