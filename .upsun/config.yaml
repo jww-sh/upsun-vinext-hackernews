@@ -11,11 +11,10 @@ applications:
         source: local
         source_path: npm_cache
 
-    build:
-      commands:
-        build: |
-          npm ci
-          npm run build
+    hooks:
+      build: |
+        npm ci
+        npm run build
 
     web:
       commands:
