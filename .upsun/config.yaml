@@ -11,6 +11,9 @@ applications:
         source: local
         source_path: pnpm_store
 
+    build:
+      flavor: none
+
     hooks:
       build: |
         npm i -g pnpm@10 && pnpm i --frozen-lockfile && pnpm run build
