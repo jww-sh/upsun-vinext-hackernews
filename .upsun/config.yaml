@@ -22,6 +22,9 @@ applications:
         cp -r /tmp/vinext-src/examples/hackernews/. $PLATFORM_APP_DIR/
         cd $PLATFORM_APP_DIR
 
+        # Fix vinext dependency: replace workspace:* with npm version
+        sed -i 's/"vinext": "workspace:\*"/"vinext": "^0.0.12"/' package.json
+
         # Apply Upsun branding
         sed -i 's/Cloudflare Workers/Upsun/g' components/server-info.jsx
 
