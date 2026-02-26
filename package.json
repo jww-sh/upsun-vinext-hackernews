@@ -7,6 +7,9 @@
     "build": "vinext build",
     "start": "vinext start"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  },
   "dependencies": {
     "ms": "3.0.0-canary.1",
     "react": "^19.2.4",
