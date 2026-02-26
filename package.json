@@ -1,0 +1,18 @@
+{
+  "name": "vinext-hackernews-upsun",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vinext dev",
+    "build": "vinext build",
+    "start": "vinext start"
+  },
+  "dependencies": {
+    "ms": "3.0.0-canary.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "server-only": "^0.0.1",
+    "vite": "^7.3.1",
+    "vinext": "workspace:*"
+  }
+}
