@@ -1,6 +1,6 @@
 # Hacker News on Upsun
 
-A Hacker News clone (App Router, RSC) running on [Upsun](https://upsun.com) via vinext. Based on the [hackernews](../hackernews) example.
+A Hacker News clone (App Router, RSC) running on [Upsun](https://upsun.com) via vinext https://blog.cloudflare.com/vinext/ . Based on the https://github.com/cloudflare/vinext/tree/main/examples/hackernews example.
 
 ## Running locally
 
