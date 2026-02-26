@@ -16,11 +16,19 @@ applications:
 
     hooks:
       build: |
+        # Save our Upsun-specific deployment files before upstream overwrites them
+        cp $PLATFORM_APP_DIR/package.json /tmp/upsun-package.json
+        cp $PLATFORM_APP_DIR/vite.config.ts /tmp/upsun-vite.config.ts
+
         # Fetch source from upstream cloudflare/vinext hackernews example
         git clone --depth 1 --filter=blob:none --sparse https://github.com/cloudflare/vinext.git /tmp/vinext-src
         cd /tmp/vinext-src && git sparse-checkout set examples/hackernews
         cp -r /tmp/vinext-src/examples/hackernews/. $PLATFORM_APP_DIR/
         cd $PLATFORM_APP_DIR
+
+        # Restore our Upsun-targeted overrides
+        cp /tmp/upsun-package.json $PLATFORM_APP_DIR/package.json
+        cp /tmp/upsun-vite.config.ts $PLATFORM_APP_DIR/vite.config.ts
 
         # Apply Upsun branding
         sed -i 's/Cloudflare Workers/Upsun/g' components/server-info.jsx
