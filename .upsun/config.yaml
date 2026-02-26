@@ -1,0 +1,38 @@
+# .upsun/config.yaml
+applications:
+  myapp:
+    source:
+      root: "/"
+
+    type: "nodejs:24"
+
+    mounts:
+      "/.npm":
+        source: local
+        source_path: npm_cache
+
+    build:
+      commands:
+        build: |
+          npm ci
+          npm run build
+
+    web:
+      commands:
+        start: "npm start"
+      locations:
+        "/":
+          passthru: true
+
+# pnpm variant:
+#   mounts: replace /.npm with /.pnpm-store (source_path: pnpm_store)
+#   build:  npm i -g pnpm@10 && pnpm i --frozen-lockfile && pnpm run build
+#   start:  pnpm start
+
+routes:
+  "https://{default}/":
+    type: upstream
+    upstream: "myapp:http"
+  "http://{default}/":
+    type: redirect
+    to: "https://{default}/"
