@@ -7,26 +7,20 @@ applications:
     type: "nodejs:24"
 
     mounts:
-      "/.npm":
+      "/.pnpm-store":
         source: local
-        source_path: npm_cache
+        source_path: pnpm_store
 
     hooks:
       build: |
-        npm ci
-        npm run build
+        npm i -g pnpm@10 && pnpm i --frozen-lockfile && pnpm run build
 
     web:
       commands:
-        start: "npm start"
+        start: "pnpm start"
       locations:
         "/":
           passthru: true
-
-# pnpm variant:
-#   mounts: replace /.npm with /.pnpm-store (source_path: pnpm_store)
-#   build:  npm i -g pnpm@10 && pnpm i --frozen-lockfile && pnpm run build
-#   start:  pnpm start
 
 routes:
   "https://{default}/":
