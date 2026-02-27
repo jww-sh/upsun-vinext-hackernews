@@ -10,7 +10,7 @@ A deployment of the [cloudflare/vinext HackerNews example](https://github.com/cl
 - **57% smaller client bundles** (72.9KB vs 168.9KB gzipped)
 - **94% Next.js API coverage**
 
-Because ~95% of vinext's code is pure Vite with no Cloudflare-specific dependencies, it runs on any Node.js-capable platform.
+Because ~95% of vinext's code is pure Vite with no Cloudflare-specific dependencies, it runs on any Node.js-capable platform — including Upsun.
 
 ## How this repo works
 
@@ -58,4 +58,3 @@ Replace `package.json` and `vite.config.ts` with the versions from this repo if 
 
 - [cloudflare/vinext HackerNews example](https://github.com/cloudflare/vinext/tree/main/examples/hackernews)
 - [Introducing vinext — Cloudflare Blog](https://blog.cloudflare.com/vinext/)
-- [How We Deployed a vinext Application — Clever Cloud](https://www.clever.cloud/blog/engineering/2026/02/25/how-we-deployed-a-vinext-application/)
